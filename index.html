@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Ritmo · Calistenia e Boxe</title>
+  <meta name="description" content="Seis meses de treinos intercalados de calistenia e boxe. Consulte suas fichas e acompanhe sua rotina semanal.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233eb5ff'/%3E%3Cpath d='M8 24V8h8a5 5 0 0 1 0 10h-8m8 0 8 6' stroke='%23041b30' stroke-width='3' fill='none'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="circuit.css">
+  <link rel="stylesheet" href="responsive.css">
+  <script src="data.js" defer></script><script src="app.js" defer></script><script src="circuit.js" defer></script>
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="./" aria-label="Ritmo, início"><span class="brandmark">R</span>ritmo<span class="brand-dot">.</span></a><span class="topnote">CALISTENIA + BOXE</span><button id="guide-button" class="quiet">Guia da rotina</button></header>
+  <main>
+    <section class="intro"><div><p class="eyebrow">SEU PLANO DE 6 MESES</p><h1>Um dia de cada vez.</h1><p class="muted">Força na segunda, quarta e sexta. Boxe na terça, quinta e sábado.</p></div><div class="weekly-stamp"><strong>3 <span>+ 3</span></strong><p>treinos por semana<br><span>Domingo é descanso.</span></p></div></section>
+    <nav id="months" class="months" aria-label="Escolher mês"></nav>
+    <section class="workspace">
+      <aside class="schedule"><div class="section-head"><div><p class="eyebrow" id="stage-type"></p><h2 id="stage-title"></h2></div><span class="stage-number" id="stage-number"></span></div><p id="stage-note" class="muted"></p><label class="weeklabel" for="week">Semana do mês</label><select id="week"><option value="1">Semana 1</option><option value="2">Semana 2</option><option value="3">Semana 3</option><option value="4">Semana 4</option><option value="5">Dias adicionais do mês</option></select><div id="days" class="days" aria-label="Escolher dia"></div><div class="progress-box"><div><span>Concluídos nesta semana</span><strong id="progress-count">0 / 6</strong></div><progress id="progress" max="6" value="0">0 de 6</progress><p id="storage-note">O progresso fica salvo neste navegador.</p></div><p class="small-note">No fim do mês, a avaliação substitui a última sexta-feira. Nas semanas extras, continue as fichas sem antecipar a etapa seguinte.</p></aside>
+      <section class="session" aria-labelledby="session-title"><div class="session-head"><div><p id="session-day" class="eyebrow"></p><h2 id="session-title"></h2></div><span id="session-badge" class="badge"></span></div><div id="session-meta" class="session-meta"></div><div id="provisional" class="notice" hidden></div><div id="view-controls" class="view-controls"><button id="home-view" aria-pressed="true">Em casa</button><button id="original-view" aria-pressed="false">Ficha de referência</button></div><div id="workout"></div><div class="session-footer"><button id="complete" class="primary">Marcar treino concluído</button><span id="completion-status" role="status" aria-live="polite"></span></div></section>
+    </section>
+    <section class="month-end"><div><p class="eyebrow">FECHAMENTO DO MÊS</p><h2>Avalie antes de avançar.</h2><p class="muted">Na última semana, reduza as séries. Teste apenas os movimentos já aprendidos.</p></div><button id="assessment-button" class="quiet">Ver avaliação da etapa</button></section>
+    <footer><span>Ritmo · sua rotina, seu ritmo.</span><span>Etapas 4 e 5 aguardam os materiais corretos.</span></footer>
+  </main>
+  <dialog id="guide-dialog"><div class="dialog-head"><h2>Guia da rotina</h2><button data-close="guide-dialog" class="quiet" aria-label="Fechar guia">Fechar</button></div><div id="guide-content" class="guide-content"></div></dialog>
+  <dialog id="assessment-dialog"><div class="dialog-head"><h2 id="assessment-title"></h2><button data-close="assessment-dialog" class="quiet" aria-label="Fechar avaliação">Fechar</button></div><div id="assessment-content" class="guide-content"></div></dialog>
+  <dialog id="exercise-editor"><form id="exercise-form"><div class="dialog-head"><h2>Editar exercício</h2><button type="button" id="close-editor" class="quiet">Fechar</button></div><div class="guide-content"><label>Exercício<input id="edit-name" required maxlength="160"></label><div class="editor-options"><label>Registro<select id="edit-unit"><option value="reps">Repetições</option><option value="seconds">Tempo em segundos</option><option value="manual">Execução livre</option></select></label><label>Descanso (segundos)<input id="edit-rest" type="number" min="0" max="600" required></label></div><div id="edit-sets"></div><button type="button" id="add-set" class="quiet">+ Adicionar série / volta</button><label class="note-label">Nota<textarea id="edit-note" rows="3" maxlength="1000" placeholder="Variação, execução ou observação"></textarea></label><p id="editor-error" role="alert"></p><button type="submit" class="primary">Salvar exercício</button></div></form></dialog>
+  <dialog id="training-player"><div class="dialog-head"><h2>Treino em andamento</h2><button id="exit-training" class="quiet">Sair do treino</button></div><div class="player-content"><p id="player-section" class="eyebrow"></p><progress id="player-progress" max="1" value="0"></progress><h2 id="player-title"></h2><p id="player-position" class="muted"></p><p id="player-dose"></p><p id="player-note" class="muted"></p><strong id="player-clock" role="timer"></strong><div class="player-controls"><button id="player-pause" class="quiet">Pausar relógio</button><button id="player-next" class="primary">Concluir exercício</button></div><p id="player-status" role="status" aria-live="polite"></p></div></dialog>
+</body>
+</html>
